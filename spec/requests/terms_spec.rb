@@ -39,5 +39,17 @@ RSpec.describe "Terms", type: :request do
         expect(response.body).to include("No definition found.")
       end
     end
+
+    context "when API returns an error" do
+      before do
+        allow(UrbanDictionaryService).to receive(:define).with(term).and_raise(UrbanDictionaryService::NetworkError)
+      end
+
+      it "renders the 500 error page" do
+        get term_path(term: term)
+        expect(response).to have_http_status(:internal_server_error)
+        expect(response.body).to include("We're sorry, but something went wrong")
+      end
+    end
   end
 end

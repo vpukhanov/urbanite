@@ -38,14 +38,8 @@ RSpec.describe UrbanDictionaryService do
           .to_return(status: 500, body: 'Internal Server Error')
       end
 
-      it 'returns an empty array' do
-        result = described_class.define(term)
-        expect(result).to eq([])
-      end
-
-      it 'logs the error' do
-        expect(Rails.logger).to receive(:error).with(/Urban Dictionary API error:/)
-        described_class.define(term)
+      it 'raises a NetworkError' do
+        expect { described_class.define(term) }.to raise_error(UrbanDictionaryService::NetworkError, "API request failed with status 500")
       end
     end
   end
