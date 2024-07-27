@@ -14,7 +14,7 @@ RSpec.describe "Index", type: :request do
 
     it "has the correct input field" do
       get root_path
-      expect(response.body).to include('placeholder="Define a term…"')
+      expect(response.body).to include('placeholder="Enter a term…"')
     end
   end
 

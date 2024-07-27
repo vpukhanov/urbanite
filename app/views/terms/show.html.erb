@@ -1,22 +1,22 @@
-<div class="max-w-2xl mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
-  <h1 class="text-4xl font-serif font-bold mb-4 text-gray-800"><%= @term.word %></h1>
+<div>
+  <h1 class="text-5xl font-bold mb-6"><%= @term.word %></h1>
 
   <% if @term.definition.present? %>
-    <div class="mb-6">
-      <h2 class="text-xl font-semibold mb-2 text-gray-700">Definition</h2>
-      <p class="text-gray-600 linked-text"><%= sanitize @term.definition, tags: %w(a), attributes: %w(href) %></p>
+    <div class="mb-8">
+      <h2 class="text-2xl font-semibold mb-2">Definition</h2>
+      <p class="text-xl leading-relaxed"><%= sanitize @term.definition, tags: %w(a), attributes: %w(href) %></p>
     </div>
   <% end %>
 
   <% if @term.example.present? %>
-    <div class="mb-6">
-      <h2 class="text-xl font-semibold mb-2 text-gray-700">Example</h2>
-      <p class="text-gray-600 italic linked-text"><%= sanitize @term.example, tags: %w(a), attributes: %w(href) %></p>
+    <div class="mb-8">
+      <h2 class="text-2xl font-semibold mb-2">Example</h2>
+      <p class="text-xl italic leading-relaxed"><%= sanitize @term.example, tags: %w(a), attributes: %w(href) %></p>
     </div>
   <% end %>
 
   <% if @term.author.present? %>
-    <div class="text-sm text-gray-500">
+    <div class="text-sm text-gray-600 mt-12">
       Defined by <%= @term.author %> on Urban Dictionary
     </div>
   <% end %>
