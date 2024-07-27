@@ -9,10 +9,10 @@ servers:
     options:
       "add-host": host.docker.internal:host-gateway
     labels:
-      traefik.http.routers.pukhanov-ru.rule: Host(`urbanite.pukhanov.ru`)
-      traefik.http.routers.pukhanov-ru_secure.rule: Host(`urbanite.pukhanov.ru`)
-      traefik.http.routers.pukhanov-ru_secure.entrypoints: websecure
-      traefik.http.routers.pukhanov-ru_secure.tls.certresolver: letsencrypt
+      traefik.http.routers.urbanite.rule: Host(`urbanite.pukhanov.ru`)
+      traefik.http.routers.urbanite_secure.rule: Host(`urbanite.pukhanov.ru`)
+      traefik.http.routers.urbanite_secure.entrypoints: websecure
+      traefik.http.routers.urbanite_secure.tls.certresolver: letsencrypt
 
 registry:
   server: cr.selcloud.ru
