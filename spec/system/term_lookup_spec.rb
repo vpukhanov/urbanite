@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "Term Lookups", type: :system do
   before do
@@ -7,10 +7,10 @@ RSpec.describe "Term Lookups", type: :system do
 
   let(:sample_definition) do
     [ {
-      'word' => 'example',
-      'definition' => 'This is a sample definition.',
-      'example' => 'This is a sample example.',
-      'author' => 'Test Author'
+      "word" => "example",
+      "definition" => "This is a sample definition.",
+      "example" => "This is a sample example.",
+      "author" => "Test Author"
     } ]
   end
 

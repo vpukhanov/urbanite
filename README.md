@@ -12,8 +12,9 @@ The application follows standard Rails conventions. The main components are the 
 
 ## Testing
 
-Run tests with `bin/rspec`. The project uses RSpec for unit and integration testing.
+The project uses RSpec for unit and integration testing, run tests with `bin/rspec`.
 
 ## Code Style
 
 Rubocop is used for code linting and formatting. Run `bin/rubocop -a` to automatically fix style issues. The project follows the [Ruby Omakase style guide](https://github.com/rails/rubocop-rails-omakase).
+
