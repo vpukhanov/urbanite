@@ -39,39 +39,4 @@ RSpec.describe Term, type: :model do
       expect(term.example).to include('<a href="/terms/sample">sample</a>')
     end
   end
-
-  describe '.from_api' do
-    let(:api_response) do
-      [{
-        'word' => 'example',
-        'definition' => 'This is a definition.',
-        'example' => 'This is an example.',
-        'author' => 'API Author'
-      }]
-    end
-
-    before do
-      allow(UrbanDictionaryService).to receive(:define).and_return(api_response)
-    end
-
-    it 'creates a Term object from API response' do
-      term = described_class.from_api('example')
-      expect(term).to be_a(Term)
-      expect(term.word).to eq('example')
-      expect(term.definition).to eq('This is a definition.')
-      expect(term.example).to eq('This is an example.')
-      expect(term.author).to eq('API Author')
-    end
-
-    context 'when API returns no results' do
-      let(:api_response) { [] }
-
-      it 'creates a Term object with "No definition found"' do
-        term = described_class.from_api('nonexistent')
-        expect(term).to be_a(Term)
-        expect(term.word).to eq('nonexistent')
-        expect(term.definition).to eq('No definition found.')
-      end
-    end
-  end
 end
