@@ -8,14 +8,18 @@ class Term
   attribute :author, :string
 
   def self.from_api(word)
-    api_response = {
-      'word' => word,
-      'definition' => "This is a [sample] definition for #{word}.",
-      'example' => "Here's a [sample] example using #{word}.",
-      'author' => 'API Author'
-    }
-
-    new(api_response)
+    definitions = UrbanDictionaryService.define(word)
+    first_definition = definitions.first
+    if first_definition
+      new(
+        word: first_definition['word'],
+        definition: first_definition['definition'],
+        example: first_definition['example'],
+        author: first_definition['author']
+      )
+    else
+      new(word: word, definition: "No definition found.")
+    end
   end
 
   def initialize(attributes = {})

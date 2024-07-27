@@ -1,10 +1,12 @@
 <div class="max-w-2xl mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
   <h1 class="text-4xl font-serif font-bold mb-4 text-gray-800"><%= @term.word %></h1>
 
-  <div class="mb-6">
-    <h2 class="text-xl font-semibold mb-2 text-gray-700">Definition</h2>
-    <p class="text-gray-600 linked-text"><%= sanitize @term.definition, tags: %w(a), attributes: %w(href) %></p>
-  </div>
+  <% if @term.definition.present? %>
+    <div class="mb-6">
+      <h2 class="text-xl font-semibold mb-2 text-gray-700">Definition</h2>
+      <p class="text-gray-600 linked-text"><%= sanitize @term.definition, tags: %w(a), attributes: %w(href) %></p>
+    </div>
+  <% end %>
 
   <% if @term.example.present? %>
     <div class="mb-6">
@@ -13,7 +15,9 @@
     </div>
   <% end %>
 
-  <div class="text-sm text-gray-500">
-    Defined by <%= @term.author %> on Urban Dictionary
-  </div>
+  <% if @term.author.present? %>
+    <div class="text-sm text-gray-500">
+      Defined by <%= @term.author %> on Urban Dictionary
+    </div>
+  <% end %>
 </div>
