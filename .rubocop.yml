@@ -1,2 +1,18 @@
 inherit_gem:
   rubocop-rails-omakase: rubocop.yml
+
+Performance:
+  Exclude:
+    - "spec/**/*"
+
+Rails/AssertNot:
+  Include:
+    - "spec/**/*"
+
+Rails/RefuteMethods:
+  Include:
+    - "spec/**/*"
+
+Style/StringLiterals:
+  Include:
+    - "spec/**/*"
