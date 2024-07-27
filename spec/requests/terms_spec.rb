@@ -39,7 +39,8 @@ RSpec.describe "Terms", type: :request do
       it "renders the 404 error page" do
         get term_path(term: term)
         expect(response).to have_http_status(:not_found)
-        expect(response.body).to include("The page you were looking for doesn't exist")
+        expect(response.body).to include("Term Not Found")
+        expect(response.headers["Turbo-Visit"]).to eq("false")
       end
     end
 
