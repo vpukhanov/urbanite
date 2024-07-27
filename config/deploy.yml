@@ -1,0 +1,34 @@
+service: urbanite
+
+image: pukhanov/urbanite
+
+servers:
+  web:
+    hosts:
+      - <%= ENV['KAMAL_SERVER_IP'] %>
+    options:
+      "add-host": host.docker.internal:host-gateway
+    labels:
+      traefik.http.routers.pukhanov-ru.rule: Host(`urbanite.pukhanov.ru`)
+      traefik.http.routers.pukhanov-ru_secure.rule: Host(`urbanite.pukhanov.ru`)
+      traefik.http.routers.pukhanov-ru_secure.entrypoints: websecure
+      traefik.http.routers.pukhanov-ru_secure.tls.certresolver: letsencrypt
+
+registry:
+  server: cr.selcloud.ru
+  username:
+    - KAMAL_REGISTRY_USERNAME
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+ssh:
+  user: <%= ENV['KAMAL_SERVER_USER'] %>
+
+env:
+  secret:
+    - KAMAL_SERVER_IP
+    - KAMAL_SERVER_USER
+    - KAMAL_REGISTRY_USERNAME
+    - KAMAL_REGISTRY_PASSWORD
+    - GITHUB_PAT
+    - RAILS_MASTER_KEY
