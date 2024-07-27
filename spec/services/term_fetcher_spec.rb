@@ -28,18 +28,5 @@ RSpec.describe TermFetcher do
       expect(result.example).to eq('Here is a <a href="/terms/sample">sample</a> example.')
       expect(result.author).to eq('API Author')
     end
-
-    context 'when the API returns no results' do
-      let(:api_response) { [] }
-
-      it 'returns a Term object with a "No definition found" message' do
-        result = described_class.fetch(word)
-        expect(result).to be_a(Term)
-        expect(result.word).to eq(word)
-        expect(result.definition).to eq('No definition found.')
-        expect(result.example).to be_nil
-        expect(result.author).to be_nil
-      end
-    end
   end
 end

@@ -32,7 +32,26 @@ RSpec.describe UrbanDictionaryService do
       )
     end
 
-    context 'when API returns an error' do
+    context 'when API returns an empty list' do
+      let(:api_response) { { 'list' => [] } }
+
+      it 'raises a NotFoundError' do
+        expect { described_class.define(term) }.to raise_error(UrbanDictionaryService::NotFoundError, "No definitions found for '#{term}'")
+      end
+    end
+
+    context 'when API returns a 404 error' do
+      before do
+        stub_request(:get, "https://api.urbandictionary.com/v0/define?term=#{term}")
+          .to_return(status: 404, body: 'Not Found')
+      end
+
+      it 'raises a NotFoundError' do
+        expect { described_class.define(term) }.to raise_error(UrbanDictionaryService::NotFoundError, "Term '#{term}' not found")
+      end
+    end
+
+    context 'when API returns a server error' do
       before do
         stub_request(:get, "https://api.urbandictionary.com/v0/define?term=#{term}")
           .to_return(status: 500, body: 'Internal Server Error')

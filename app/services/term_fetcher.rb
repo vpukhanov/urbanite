@@ -11,15 +11,11 @@ class TermFetcher
     definitions = UrbanDictionaryService.define(@word)
     first_definition = definitions.first
 
-    if first_definition
-      Term.new(
-        word: first_definition['word'],
-        definition: first_definition['definition'],
-        example: first_definition['example'],
-        author: first_definition['author']
-      )
-    else
-      Term.new(word: @word, definition: "No definition found.")
-    end
+    Term.new(
+      word: first_definition['word'],
+      definition: first_definition['definition'],
+      example: first_definition['example'],
+      author: first_definition['author']
+    )
   end
 end

@@ -31,16 +31,19 @@ RSpec.describe "Terms", type: :request do
       expect(response.body).to include(term)
     end
 
-    context "when API returns no results" do
-      let(:api_response) { [] }
+    context "when API returns a NotFoundError" do
+      before do
+        allow(UrbanDictionaryService).to receive(:define).with(term).and_raise(UrbanDictionaryService::NotFoundError)
+      end
 
-      it "displays 'No definition found'" do
+      it "renders the 404 error page" do
         get term_path(term: term)
-        expect(response.body).to include("No definition found.")
+        expect(response).to have_http_status(:not_found)
+        expect(response.body).to include("The page you were looking for doesn't exist")
       end
     end
 
-    context "when API returns an error" do
+    context "when API returns a server error" do
       before do
         allow(UrbanDictionaryService).to receive(:define).with(term).and_raise(UrbanDictionaryService::NetworkError)
       end

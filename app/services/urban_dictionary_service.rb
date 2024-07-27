@@ -4,6 +4,7 @@ class UrbanDictionaryService
   BASE_URL = 'https://api.urbandictionary.com/v0/define'
 
   class NetworkError < StandardError; end
+  class NotFoundError < StandardError; end
 
   def self.define(term)
     new(term).define
@@ -27,9 +28,15 @@ class UrbanDictionaryService
   end
 
   def parse_response(response)
-    raise NetworkError, "API request failed with status #{response.code}" unless response.is_a? Net::HTTPSuccess
-
-    json = JSON.parse(response.body)
-    json['list']
+    case response
+    when Net::HTTPSuccess
+      list = JSON.parse(response.body)['list']
+      raise NotFoundError, "No definitions found for '#{@term}'" if list.empty?
+      list
+    when Net::HTTPNotFound
+      raise NotFoundError, "Term '#{@term}' not found"
+    else
+      raise NetworkError, "API request failed with status #{response.code}"
+    end
   end
 end
