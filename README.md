@@ -17,4 +17,3 @@ The project uses RSpec for unit and integration testing, run tests with `bin/rsp
 ## Code Style
 
 Rubocop is used for code linting and formatting. Run `bin/rubocop -a` to automatically fix style issues. The project follows the [Ruby Omakase style guide](https://github.com/rails/rubocop-rails-omakase).
-
