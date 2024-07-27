@@ -1,7 +1,7 @@
-require 'net/http'
+require "net/http"
 
 class UrbanDictionaryService
-  BASE_URL = 'https://api.urbandictionary.com/v0/define'
+  BASE_URL = "https://api.urbandictionary.com/v0/define"
 
   class NetworkError < StandardError; end
   class NotFoundError < StandardError; end
@@ -30,7 +30,7 @@ class UrbanDictionaryService
   def parse_response(response)
     case response
     when Net::HTTPSuccess
-      list = JSON.parse(response.body)['list']
+      list = JSON.parse(response.body)["list"]
       raise NotFoundError, "No definitions found for '#{@term}'" if list.empty?
       list
     when Net::HTTPNotFound

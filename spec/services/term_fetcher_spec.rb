@@ -4,12 +4,12 @@ RSpec.describe TermFetcher do
   describe '.fetch' do
     let(:word) { 'example' }
     let(:api_response) do
-      [{
+      [ {
         'word' => word,
         'definition' => 'This is a [sample] definition.',
         'example' => 'Here is a [sample] example.',
         'author' => 'API Author'
-      }]
+      } ]
     end
 
     before do

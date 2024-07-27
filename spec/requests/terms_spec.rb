@@ -4,12 +4,12 @@ RSpec.describe "Terms", type: :request do
   describe "GET /terms/:term" do
     let(:term) { 'example' }
     let(:api_response) do
-      [{
+      [ {
         'word' => term,
         'definition' => 'This is a [sample] definition.',
         'example' => 'Here is a [sample] example.',
         'author' => 'API Author'
-      }]
+      } ]
     end
 
     before do

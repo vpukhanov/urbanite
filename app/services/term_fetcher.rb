@@ -12,10 +12,10 @@ class TermFetcher
     first_definition = definitions.first
 
     Term.new(
-      word: first_definition['word'],
-      definition: first_definition['definition'],
-      example: first_definition['example'],
-      author: first_definition['author']
+      word: first_definition["word"],
+      definition: first_definition["definition"],
+      example: first_definition["example"],
+      author: first_definition["author"]
     )
   end
 end
