@@ -14,5 +14,11 @@ Rails/RefuteMethods:
     - "spec/**/*"
 
 Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: double_quotes
   Include:
+    - "app/**/*"
+    - "config/**/*"
+    - "lib/**/*"
     - "spec/**/*"
+    - "Gemfile"

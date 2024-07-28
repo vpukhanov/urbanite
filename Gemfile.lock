@@ -105,6 +105,8 @@ GEM
       reline (>= 0.3.8)
     diff-lcs (1.5.1)
     drb (2.2.1)
+    engtagger (0.4.1)
+      lru_redux
     erubi (1.13.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -128,6 +130,7 @@ GEM
     loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
+    lru_redux (1.1.0)
     mail (2.8.1)
       mini_mime (>= 0.1.1)
       net-imap
@@ -343,6 +346,7 @@ DEPENDENCIES
   bootsnap
   capybara
   debug
+  engtagger
   importmap-rails
   jbuilder
   puma (>= 5.0)

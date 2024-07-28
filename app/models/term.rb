@@ -6,6 +6,7 @@ class Term
   attribute :definition, :string
   attribute :example, :string
   attribute :author, :string
+  attribute :part_of_speech, :string
 
   def initialize(attributes = {})
     super

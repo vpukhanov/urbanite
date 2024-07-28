@@ -8,14 +8,17 @@ class TermFetcher
   end
 
   def fetch
-    definitions = UrbanDictionaryService.define(@word)
-    first_definition = definitions.first
+    all_definitions = UrbanDictionaryService.define(@word)
+    definition = all_definitions.first
+
+    part_of_speech = PartOfSpeechClassifier.classify(definition["word"], definition["definition"])
 
     Term.new(
-      word: first_definition["word"],
-      definition: first_definition["definition"],
-      example: first_definition["example"],
-      author: first_definition["author"]
+      word: definition["word"],
+      definition: definition["definition"],
+      example: definition["example"],
+      author: definition["author"],
+      part_of_speech: part_of_speech
     )
   end
 end

@@ -6,4 +6,12 @@
   a {
     @apply text-blue-600 hover:text-blue-800;
   }
+
+  .tooltip {
+    @apply invisible absolute;
+  }
+
+  .has-tooltip:hover .tooltip {
+    @apply visible z-50;
+  }
 }
