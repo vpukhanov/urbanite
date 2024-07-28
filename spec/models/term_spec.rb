@@ -6,7 +6,8 @@ RSpec.describe Term, type: :model do
       "word" => "example",
       "definition" => "This is a [sample] definition.",
       "example" => "Here is a [sample] example.",
-      "author" => "Test Author"
+      "author" => "Test Author",
+      "part_of_speech" => "noun"
     }
   end
 
@@ -27,6 +28,10 @@ RSpec.describe Term, type: :model do
 
     it "has an author" do
       expect(term.author).to eq("Test Author")
+    end
+
+    it "has a part of speech" do
+      expect(term.part_of_speech).to eq("noun")
     end
   end
 
