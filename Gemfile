@@ -48,7 +48,7 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 # Classify terms' part-of-speech
-gem "engtagger"
+gem "engtagger", github: "yohasebe/engtagger", ref: "v0.4.1"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/yohasebe/engtagger.git
+  revision: c941b06bbc74973f0183a099803887c1c6b4bf4e
+  ref: v0.4.1
+  specs:
+    engtagger (0.4.1)
+      lru_redux
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -105,8 +113,6 @@ GEM
       reline (>= 0.3.8)
     diff-lcs (1.5.1)
     drb (2.2.1)
-    engtagger (0.4.1)
-      lru_redux
     erubi (1.13.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -346,7 +352,7 @@ DEPENDENCIES
   bootsnap
   capybara
   debug
-  engtagger
+  engtagger!
   importmap-rails
   jbuilder
   puma (>= 5.0)

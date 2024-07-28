@@ -14,6 +14,20 @@ The application follows standard Rails conventions. The main components are the 
 
 The project uses RSpec for unit and integration testing, run tests with `bin/rspec`.
 
+## Deployment
+
+Urbanite is deployed using [Kamal](https://kamal-deploy.org/). The deployment is configured in `config/deploy.yml`.
+
+The following environment variables need to be set:
+
+- `KAMAL_SERVER_IP`: The IP address of the deployment server
+- `KAMAL_SERVER_USER`: The SSH user for the deployment server
+- `KAMAL_REGISTRY_USERNAME`: Username for the Docker registry
+- `KAMAL_REGISTRY_PASSWORD`: Password for the Docker registry
+- `RAILS_MASTER_KEY`: The Rails master key for decrypting credentials
+
+To deploy the application, ensure that the environment variables are set, and run `kamal deploy` or `kamal setup` if this is the first time deploying to the particular server.
+
 ## Code Style
 
 Rubocop is used for code linting and formatting. Run `bin/rubocop -a` to automatically fix style issues. The project follows the [Ruby Omakase style guide](https://github.com/rails/rubocop-rails-omakase).
