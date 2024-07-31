@@ -12,7 +12,6 @@ servers:
       traefik.http.routers.urbanite.rule: Host(`urbanite.pukhanov.ru`)
       traefik.http.routers.urbanite_secure.rule: Host(`urbanite.pukhanov.ru`)
       traefik.http.routers.urbanite_secure.entrypoints: websecure
-      traefik.http.routers.urbanite_secure.tls: true
       traefik.http.routers.urbanite_secure.tls.certresolver: letsencrypt
 
 registry:
@@ -31,6 +30,9 @@ traefik:
   args:
     entryPoints.web.address: ":80"
     entryPoints.websecure.address: ":443"
+    entryPoints.web.http.redirections.entryPoint.to: websecure
+    entryPoints.web.http.redirections.entryPoint.scheme: https
+    entryPoints.web.http.redirections.entrypoint.permanent: true
     certificatesResolvers.letsencrypt.acme.email: "vyacheslav@pukhanov.ru"
     certificatesResolvers.letsencrypt.acme.storage: "/letsencrypt/acme.json"
     certificatesResolvers.letsencrypt.acme.httpchallenge: true
