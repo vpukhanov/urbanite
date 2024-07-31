@@ -12,6 +12,7 @@ servers:
       traefik.http.routers.urbanite.rule: Host(`urbanite.pukhanov.ru`)
       traefik.http.routers.urbanite_secure.rule: Host(`urbanite.pukhanov.ru`)
       traefik.http.routers.urbanite_secure.entrypoints: websecure
+      traefik.http.routers.urbanite_secure.tls: true
       traefik.http.routers.urbanite_secure.tls.certresolver: letsencrypt
 
 registry:
@@ -21,13 +22,23 @@ registry:
   password:
     - KAMAL_REGISTRY_PASSWORD
 
-ssh:
-  user: <%= ENV['KAMAL_SERVER_USER'] %>
+traefik:
+  options:
+    publish:
+      - "443:443"
+    volume:
+      - "/letsencrypt/acme.json:/letsencrypt/acme.json"
+  args:
+    entryPoints.web.address: ":80"
+    entryPoints.websecure.address: ":443"
+    certificatesResolvers.letsencrypt.acme.email: "vyacheslav@pukhanov.ru"
+    certificatesResolvers.letsencrypt.acme.storage: "/letsencrypt/acme.json"
+    certificatesResolvers.letsencrypt.acme.httpchallenge: true
+    certificatesResolvers.letsencrypt.acme.httpchallenge.entrypoint: web
 
 env:
   secret:
     - KAMAL_SERVER_IP
-    - KAMAL_SERVER_USER
     - KAMAL_REGISTRY_USERNAME
     - KAMAL_REGISTRY_PASSWORD
     - RAILS_MASTER_KEY
