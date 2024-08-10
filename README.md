@@ -1,6 +1,6 @@
 # Urbanite
 
-Urbanite is a Rails application that provides an alternative interface for Urban Dictionary. It uses the Urban Dictionary API to fetch definitions and present them in a clean, dictionary-style format. [Try it out on urbanite.pukhanov.ru](https://urbanite.pukhanov.ru).
+Urbanite is a Rails application that provides an alternative interface for Urban Dictionary. It uses the Urban Dictionary API to fetch definitions and present them in a clean, dictionary-style format.
 
 ## Setup
 
